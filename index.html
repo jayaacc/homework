@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>易县庙会——家乡的文化记忆</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&family=Noto+Serif+SC:wght@400;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #8B1A1A;
+            --deep-red: #5C1515;
+            --gold: #D4A84B;
+            --light-gold: #F5E6C8;
+            --ink-black: #1A1A1A;
+            --paper: #FDF8F0;
+            --shadow: rgba(92, 21, 21, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background: var(--paper);
+            color: var(--ink-black);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* 片头信息 */
+        .header-info {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--deep-red), var(--primary-red));
+            color: var(--light-gold);
+            text-align: center;
+            padding: 12px 20px;
+            z-index: 1000;
+            box-shadow: 0 4px 20px var(--shadow);
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            font-family: 'ZCOOL XiaoWei', serif;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .header-info span {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-info span::before {
+            content: "◆";
+            margin-right: 8px;
+            font-size: 10px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background:
+                radial-gradient(ellipse at 20% 80%, rgba(212, 168, 75, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(139, 26, 26, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, var(--paper) 0%, #F5EFE5 100%);
+            position: relative;
+            padding: 80px 20px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L30 60M0 30L60 30' stroke='%23D4A84B' stroke-width='0.5' stroke-opacity='0.1' fill='none'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--primary-red);
+            color: var(--light-gold);
+            padding: 8px 30px;
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 18px;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            position: relative;
+            clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+        }
+
+        .hero-title {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: clamp(48px, 10vw, 96px);
+            color: var(--primary-red);
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 0 var(--gold);
+            position: relative;
+        }
+
+        .hero-title::after {
+            content: "闹新春 · 祈福运";
+            display: block;
+            font-size: 24px;
+            color: var(--gold);
+            margin-top: 10px;
+            font-family: 'ZCOOL XiaoWei', serif;
+            letter-spacing: 8px;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--ink-black);
+            margin-top: 30px;
+            font-family: 'ZCOOL XiaoWei', serif;
+            letter-spacing: 4px;
+            opacity: 0.8;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        .scroll-hint span {
+            display: block;
+            width: 20px;
+            height: 30px;
+            border: 2px solid var(--gold);
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .scroll-hint span::after {
+            content: "";
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 2px;
+            animation: scrollDot 2s infinite;
+        }
+
+        @keyframes scrollDot {
+            0%, 100% { opacity: 1; top: 6px; }
+            50% { opacity: 0.3; top: 14px; }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: clamp(32px, 6vw, 48px);
+            color: var(--primary-red);
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title h2::before,
+        .section-title h2::after {
+            content: "◆";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .section-title h2::before {
+            left: -40px;
+        }
+
+        .section-title h2::after {
+            right: -40px;
+        }
+
+        /* Introduction */
+        .intro {
+            background: white;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px var(--shadow);
+            border: 1px solid rgba(212, 168, 75, 0.3);
+            position: relative;
+        }
+
+        .intro::before {
+            content: "引";
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            background: var(--primary-red);
+            color: var(--light-gold);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 28px;
+            border-radius: 50%;
+        }
+
+        .intro p {
+            font-size: 18px;
+            text-indent: 2em;
+            margin-bottom: 20px;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(212, 168, 75, 0.2);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(92, 21, 21, 0.2);
+        }
+
+        .card-icon {
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary-red), var(--deep-red));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-content h3 {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 26px;
+            color: var(--primary-red);
+            margin-bottom: 15px;
+        }
+
+        .card-content p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Culture Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--gold), var(--primary-red));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 40px;
+            padding-left: 30px;
+        }
+
+        .timeline-item::before {
+            content: "●";
+            position: absolute;
+            left: -34px;
+            top: 5px;
+            color: var(--gold);
+            font-size: 20px;
+        }
+
+        .timeline-item h3 {
+            font-family: 'ZCOOL XiaoWei', serif;
+            font-size: 22px;
+            color: var(--primary-red);
+            margin-bottom: 10px;
+        }
+
+        .timeline-item p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* Performance Section */
+        .performance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .performance-item {
+            background: linear-gradient(145deg, white, #FFF9F0);
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .performance-item:hover {
+            background: var(--primary-red);
+            color: var(--light-gold);
+            transform: scale(1.05);
+        }
+
+        .performance-item:hover .perf-icon {
+            transform: scale(1.2);
+        }
+
+        .performance-item .perf-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .performance-item h4 {
+            font-family: 'ZCOOL XiaoWei', serif;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .performance-item p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Message Section - Call to Action */
+        .message-section {
+            background: linear-gradient(135deg, var(--deep-red), var(--primary-red));
+            color: var(--light-gold);
+            text-align: center;
+            padding: 80px 30px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23D4A84B' stroke-width='0.5' opacity='0.2'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .message-section h2 {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 42px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .message-section p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 20px;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .message-section .quote {
+            font-family: 'ZCOOL XiaoWei', serif;
+            font-size: 24px;
+            color: var(--gold);
+            margin-top: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .highlight-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border: 1px solid var(--gold);
+            position: relative;
+            z-index: 1;
+        }
+
+        .highlight-box h3 {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: var(--gold);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--ink-black);
+            color: #888;
+        }
+
+        footer p {
+            font-family: 'ZCOOL XiaoWei', serif;
+            font-size: 16px;
+        }
+
+        footer .author {
+            color: var(--gold);
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        /* Decorative Elements */
+        .decoration {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .decoration-1 {
+            top: 100px;
+            right: 20px;
+            background: var(--primary-red);
+            border-radius: 50%;
+        }
+
+        .decoration-2 {
+            bottom: 200px;
+            left: 20px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-info {
+                gap: 15px;
+                font-size: 12px;
+                padding: 10px 15px;
+            }
+
+            .hero-title {
+                font-size: 48px;
+            }
+
+            .intro {
+                padding: 40px 25px;
+            }
+
+            .intro::before {
+                left: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 22px;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 片头信息 -->
+    <div class="header-info">
+        <span>易县初级中学</span>
+        <span>八年级十四班</span>
+        <span>张琳熙</span>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">家乡文化调研</div>
+            <h1 class="hero-title">易县庙会</h1>
+            <p class="hero-subtitle">探寻千年文化 · 传承家乡记忆</p>
+        </div>
+        <div class="scroll-hint">
+            <span></span>
+        </div>
+    </div>
+
+    <!-- 引言 -->
+    <section>
+        <div class="section-title">
+            <h2>什么是庙会</h2>
+        </div>
+        <div class="intro">
+            <p>庙会，是中国传统的民俗文化活动，集宗教信仰、民间艺术、商品贸易于一体。在易县这片古老的土地上，庙会承载着千年的历史记忆，是家乡人民精神文化生活的重要组成部分。</p>
+            <p>每逢庙会期间，乡亲们从四面八方赶来，祭拜祈福、观看表演、品尝美食、购置百货。庙会不仅是物质的交流会，更是精神的盛宴，承载着我们对美好生活的向往和对传统文化的坚守。</p>
+        </div>
+    </section>
+
+    <!-- 主要庙会 -->
+    <section>
+        <div class="section-title">
+            <h2>易县特色庙会</h2>
+        </div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">🏔️</div>
+                <div class="card-content">
+                    <h3>后山庙会</h3>
+                    <p>位于易县县城北15公里的洪崖山，每年农历三月初一至十五举办。据现存清代碑刻记载，后山庙始建于东汉时期，已有千年历史。"洪崖积雪"为著名的易州十景之一。</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🐉</div>
+                <div class="card-content">
+                    <h3>春节花会</h3>
+                    <p>每年春节期间，易县举办盛大的春节花会调演。舞龙、舞狮、秧歌、高跷等传统节目轮番上演，展示国家级非物质文化遗产——摆字龙灯的独特魅力。</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎭</div>
+                <div class="card-content">
+                    <h3>乡镇庙会</h3>
+                    <p>易县各乡镇都有独特的庙会传统，如紫荆关四月十八庙会、良岗四月十八庙会等。这些庙会既是宗教活动，也是重要的商品交易会。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 文化传承 -->
+    <section>
+        <div class="section-title">
+            <h2>庙会文化渊源</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>东汉起源</h3>
+                <p>后山庙始建于东汉时期，距今已有近两千年的历史，是易县庙会文化的源头。</p>
+            </div>
+            <div class="timeline-item">
+                <h3>唐宋发展</h3>
+                <p>庙会规模逐渐扩大，从单一的宗教活动发展为集祭拜、贸易、演出于一体的综合性民俗活动。</p>
+            </div>
+            <div class="timeline-item">
+                <h3>明清鼎盛</h3>
+                <p>庙会达到鼎盛时期，会期延长至数天，各地商贾云集，文艺表演丰富多样。</p>
+            </div>
+            <div class="timeline-item">
+                <h3>当代传承</h3>
+                <p>如今，易县庙会被列入非物质文化遗产，传统文化在新时代焕发出新的生机与活力。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 传统表演 -->
+    <section>
+        <div class="section-title">
+            <h2>传统表演项目</h2>
+        </div>
+        <div class="performance-grid">
+            <div class="performance-item">
+                <span class="perf-icon">🐉</span>
+                <h4>摆字龙灯</h4>
+                <p>国家级非物质文化遗产</p>
+            </div>
+            <div class="performance-item">
+                <span class="perf-icon">🦁</span>
+                <h4>北邵狮子</h4>
+                <p>威武雄壮</p>
+            </div>
+            <div class="performance-item">
+                <span class="perf-icon">🥁</span>
+                <h4>东庄大鼓</h4>
+                <p>铿锵有力</p>
+            </div>
+            <div class="performance-item">
+                <span class="perf-icon">🦶</span>
+                <h4>高跷</h4>
+                <p>技艺高超</p>
+            </div>
+            <div class="performance-item">
+                <span class="perf-icon">🪘</span>
+                <h4>秧歌</h4>
+                <p>欢快喜庆</p>
+            </div>
+            <div class="performance-item">
+                <span class="perf-icon">🎪</span>
+                <h4>杂耍</h4>
+                <p>精彩纷呈</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 励志寄语 -->
+    <section>
+        <div class="message-section">
+            <h2>致每一位易县少年</h2>
+            <p>我们的家乡易县，是一片拥有深厚文化底蕴的土地。千年的历史孕育了独特的民俗文化，这些传统文化是先辈留给我们的宝贵财富。</p>
+            <p>作为新时代的少年，我们既要 <strong>传承优秀传统文化</strong>，也要 <strong>努力学习科学知识</strong>。只有学好本领，才能让我们的家乡文化走向更广阔的舞台，让更多人了解和喜爱我们的传统文化。</p>
+            <div class="highlight-box">
+                <h3>🎯 励志寄语</h3>
+                <p>文化是根，知识是叶。<br>根深才能叶茂，学成方能报乡。<br>愿我们都能成为家乡文化的传承者，<br>用知识照亮家乡的未来！</p>
+            </div>
+            <p class="quote">—— 张琳熙</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>河北保定 · 易县</p>
+        <p class="author">八年级十四班 张琳熙</p>
+        <p style="margin-top: 15px; font-size: 14px;">2026年3月</p>
+    </footer>
+</body>
+</html>
