@@ -357,13 +357,13 @@
         /* Performance Section */
         .performance-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
 
         .performance-item {
             background: linear-gradient(145deg, white, #FFF9F0);
-            padding: 30px 20px;
+            padding: 25px;
             border-radius: 12px;
             text-align: center;
             border: 2px solid var(--gold);
@@ -373,18 +373,22 @@
         .performance-item:hover {
             background: var(--primary-red);
             color: var(--light-gold);
-            transform: scale(1.05);
+            transform: scale(1.02);
         }
 
         .performance-item:hover .perf-icon {
-            transform: scale(1.2);
+            transform: scale(1.05);
         }
 
         .performance-item .perf-icon {
-            font-size: 45px;
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
             margin-bottom: 15px;
             transition: transform 0.3s ease;
             display: block;
+            border: 3px solid var(--gold);
         }
 
         .performance-item h4 {
@@ -532,6 +536,10 @@
             section {
                 padding: 60px 20px;
             }
+
+            .video-container video {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -566,33 +574,17 @@
         </div>
     </section>
 
-    <!-- 主要庙会 -->
+    <!-- 春节民俗花会 -->
     <section>
         <div class="section-title">
-            <h2>易县特色庙会</h2>
+            <h2>龙狮鼓舞闹易州</h2>
         </div>
-        <div class="card-grid">
-            <div class="card">
-                <div class="card-icon">🏔️</div>
-                <div class="card-content">
-                    <h3>后山庙会</h3>
-                    <p>位于易县县城北15公里的洪崖山，每年农历三月初一至十五举办。据现存清代碑刻记载，后山庙始建于东汉时期，已有千年历史。"洪崖积雪"为著名的易州十景之一。</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-icon">🐉</div>
-                <div class="card-content">
-                    <h3>春节花会</h3>
-                    <p>每年春节期间，易县举办盛大的春节花会调演。舞龙、舞狮、秧歌、高跷等传统节目轮番上演，展示国家级非物质文化遗产——摆字龙灯的独特魅力。</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-icon">🎭</div>
-                <div class="card-content">
-                    <h3>乡镇庙会</h3>
-                    <p>易县各乡镇都有独特的庙会传统，如紫荆关四月十八庙会、良岗四月十八庙会等。这些庙会既是宗教活动，也是重要的商品交易会。</p>
-                </div>
-            </div>
+        <div class="video-container" style="text-align: center;">
+            <video controls style="width: 100%; max-width: 400px; height: auto; aspect-ratio: 9/16; border-radius: 12px; border: 3px solid var(--gold);">
+                <source src="img/shipin.mp4" type="video/mp4">
+                您的浏览器不支持视频播放
+            </video>
+            <p style="text-align: center; margin-top: 15px; font-size: 18px; color: #555;">2月21日，农历正月初五，易县2026年"龙狮鼓舞闹易州"春节民俗花会调演拉开帷幕。舞龙、舞狮、秧歌等节目轮番登场，锣鼓喧天闹新春。</p>
         </div>
     </section>
 
@@ -628,32 +620,32 @@
         </div>
         <div class="performance-grid">
             <div class="performance-item">
-                <span class="perf-icon">🐉</span>
+                <img class="perf-icon" src="img/longdeng.jpg" alt="摆字龙灯">
                 <h4>摆字龙灯</h4>
                 <p>国家级非物质文化遗产</p>
             </div>
             <div class="performance-item">
-                <span class="perf-icon">🦁</span>
-                <h4>北邵狮子</h4>
-                <p>威武雄壮</p>
+                <img class="perf-icon" src="img/wushi.jpg" alt="北邵狮子">
+                <h4>北邵狮子                <p></h4>
+威武雄壮</p>
             </div>
             <div class="performance-item">
-                <span class="perf-icon">🥁</span>
+                <img class="perf-icon" src="img/dahu.jpg" alt="东庄大鼓">
                 <h4>东庄大鼓</h4>
                 <p>铿锵有力</p>
             </div>
             <div class="performance-item">
-                <span class="perf-icon">🦶</span>
+                <img class="perf-icon" src="img/gaoqiao.jpg" alt="高跷">
                 <h4>高跷</h4>
                 <p>技艺高超</p>
             </div>
             <div class="performance-item">
-                <span class="perf-icon">🪘</span>
+                <img class="perf-icon" src="img/yangge.jpeg" alt="秧歌">
                 <h4>秧歌</h4>
                 <p>欢快喜庆</p>
             </div>
             <div class="performance-item">
-                <span class="perf-icon">🎪</span>
+                <img class="perf-icon" src="img/zashua.jpg" alt="杂耍">
                 <h4>杂耍</h4>
                 <p>精彩纷呈</p>
             </div>
