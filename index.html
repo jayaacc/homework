@@ -580,7 +580,7 @@
             <h2>龙狮鼓舞闹易州</h2>
         </div>
         <div class="video-container" style="text-align: center;">
-            <video controls style="width: 100%; max-width: 400px; height: auto; aspect-ratio: 9/16; border-radius: 12px; border: 3px solid var(--gold);">
+            <video id="shipinVideo" controls style="width: 100%; max-width: 400px; height: auto; aspect-ratio: 9/16; border-radius: 12px; border: 3px solid var(--gold);" poster="">
                 <source src="img/shipin.mp4" type="video/mp4">
                 您的浏览器不支持视频播放
             </video>
@@ -672,5 +672,24 @@
         <p class="author">八年级十四班 张琳熙</p>
         <p style="margin-top: 15px; font-size: 14px;">2026年3月</p>
     </footer>
+    <script>
+        // 提取视频首帧作为封面
+        document.addEventListener('DOMContentLoaded', function() {
+            var video = document.getElementById('shipinVideo');
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext('2d');
+
+            video.addEventListener('loadeddata', function() {
+                video.currentTime = 0.1; // 设置到第一帧
+            });
+
+            video.addEventListener('seeked', function() {
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                video.poster = canvas.toDataURL('image/jpeg');
+            });
+        });
+    </script>
 </body>
 </html>
